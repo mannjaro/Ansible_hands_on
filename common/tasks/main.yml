@@ -1,0 +1,11 @@
+---
+# tasks file for common
+- name: Install ufw 
+  apt:
+    name: ufw
+    state: present
+
+- name: Allow everything and enable UFW
+  community.general.ufw:
+    state: enabled
+    policy: allow

@@ -1,0 +1,9 @@
+---
+- hosts: webserver
+  connection: docker
+  vars:
+    - DOCKER_HOST: "unix://var/run/docker.sock"
+  roles:
+    - php
+    - wordpress
+    - mariadb
