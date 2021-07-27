@@ -1,8 +1,20 @@
 version: '3'
 services: 
-  wordpress:
-    image: python:3
-    container_name: container_1
+  controller:
+    build: 
+      context: ./docker/controller
+      dockerfile: Dockerfile
+    container_name: controller
+    tty: true
+    working_dir: "/var/data"
+    volumes:
+      - ./roles:/var/data
     command: tail -f /dev/null
+
+  wordpress:
+    build: 
+      context: ./docker/target
+      dockerfile: Dockerfile
+    container_name: target
     ports: 
       - "127.0.0.1:8080:80"
