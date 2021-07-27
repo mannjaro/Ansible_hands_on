@@ -1,0 +1,30 @@
+version: '3'
+services: 
+  controller:
+    build: 
+      context: ./controller
+      dockerfile: Dockerfile
+    container_name: controller
+    tty: true
+    working_dir: "/var/data"
+    volumes:
+      - ./playbook:/var/data
+    command: tail -f /dev/null
+
+  target1:
+    build: 
+      context: ./target
+      dockerfile: Dockerfile
+    container_name: target_1
+    tty: true
+    volumes:
+      - ./tmp_1:/root
+
+  target2:
+    build: 
+      context: ./target
+      dockerfile: Dockerfile
+    container_name: target_2
+    tty: true
+    volumes:
+      - ./tmp_2:/root

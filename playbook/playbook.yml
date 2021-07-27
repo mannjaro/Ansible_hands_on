@@ -1,0 +1,26 @@
+- hosts: target
+
+  gather_facts: no
+
+  tasks:
+    - name: ping test
+      ansible.builtin.ping:
+      register: result
+
+    - name: echo result
+      ansible.builtin.debug:
+        msg: "{{ result }}"
+
+- hosts: target_1
+  gather_facts: no
+  tasks:
+    - name: touch file
+      ansible.builtin.command:
+        touch hoge.txt
+
+- hosts: target_2
+  gather_facts: no
+  tasks:
+    - name: touch file
+      ansible.builtin.command:
+        touch fuga.txt
