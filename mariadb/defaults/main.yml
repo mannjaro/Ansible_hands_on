@@ -1,4 +1,0 @@
----
-# defaults file for mariadb
-db_password: 12345
-db_socket: "/var/run/mysqld/mysqld.sock"
